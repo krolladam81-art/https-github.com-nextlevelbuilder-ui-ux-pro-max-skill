@@ -23,7 +23,7 @@ SERVICES = [
             "can be re-used, and leave the house broom-clean and ready to list."
         ),
         "includes": [
-            "Walk-through (in person or by video) and a firm written quote",
+            "Walk-through (in person or by video) and a free quote",
             "Sorting with you or your realtor: keep, donate, sell, dispose",
             "Furniture, appliances, clothing, books, tools, and household contents",
             "Attics, basements, garages, barns and outbuildings",
@@ -33,13 +33,13 @@ SERVICES = [
         "who": "Executors, out-of-state families, estate attorneys, realtors and property managers.",
         "process": [
             ("Tell us about the property", "Call, text photos, or send a video walk-through. Out of state? We can do the whole thing remotely."),
-            ("Get a firm quote", "One price for the whole job, in writing, before anything moves."),
+            ("Get a quote", "We price the whole job and confirm it with you before anything moves."),
             ("We clear it", "Most single-family estates take 1–3 days depending on contents and outbuildings."),
             ("Photo sign-off", "We send finished photos so you can see the result from wherever you are."),
         ],
         "faqs": [
             ("How much does an estate cleanout cost in Vermont?",
-             "Most whole-house and estate cleanouts we do in Southern Vermont fall between $2,650 and $9,900+, depending on the size of the home, how full it is, outbuildings, and access. We give a firm quote after a walk-through or video call."),
+             "Estate cleanouts start at $2,650 and up, depending on the size of the home, how full it is, outbuildings, and access. We quote after a walk-through or video call."),
             ("Do I need to be there for the cleanout?",
              "No. Many of our estate clients live out of state. We can work from a video walk-through, coordinate with your realtor or attorney for access, and send photos when the job is done."),
             ("What happens to items that are still usable?",
@@ -72,7 +72,7 @@ SERVICES = [
         "who": "Homeowners moving or downsizing, new buyers, landlords, and families.",
         "process": [
             ("Photos or walk-through", "Text photos or book a quick walk-through."),
-            ("Firm quote", "One price, in writing, no add-ons after loading."),
+            ("Quote", "We confirm the price before we start. No add-ons after loading."),
             ("Clear-out day", "Most homes are done in one to two days."),
             ("Broom clean", "We sweep up and send photos."),
         ],
@@ -80,7 +80,7 @@ SERVICES = [
             ("How long does a whole-house cleanout take?",
              "Most homes in our area take one to two days. Larger homes with full basements, barns or outbuildings can take three. We'll give you a time estimate with your quote."),
             ("How much does a house cleanout cost?",
-             "Typically $2,650 to $9,900+ for a full house in Southern Vermont. The biggest factors are volume, heavy items, stairs and outbuildings."),
+             "Whole-house cleanouts start at $2,650 and up. The biggest factors are volume, heavy items, stairs and outbuildings."),
             ("Do you take everything?",
              "Nearly everything — furniture, appliances, clothing, books, tools, and general household items. We can't take hazardous materials like paint cans with liquid, fuel, chemicals or asbestos; we'll tell you upfront if anything needs special handling."),
         ],
@@ -149,7 +149,7 @@ SERVICES = [
         "who": "General contractors, builders, remodelers, property managers and DIY renovators.",
         "process": [
             ("Tell us the load", "Photos or a site visit."),
-            ("Quote by volume", "Firm price based on how much and how heavy."),
+            ("Quote by volume", "Priced on how much and how heavy."),
             ("Load & haul", "We do the lifting and leave the site clean."),
             ("Repeat as needed", "Set up recurring pickups for active sites."),
         ],
@@ -185,13 +185,13 @@ SERVICES = [
         "who": "Homeowners, new property buyers, farms and estates.",
         "process": [
             ("Photos", "A few pictures of the inside and the access."),
-            ("Quote", "A firm price for the whole building."),
+            ("Quote", "One quote for the whole building."),
             ("Clear-out", "We sort metal and salvage as we load."),
             ("Swept", "Empty and swept, ready for its next life."),
         ],
         "faqs": [
             ("How much does a barn cleanout cost?",
-             "It depends on size and contents. A typical loaded barn cleanout we've done this year has run around $2,400, with very large or heavily loaded barns going higher. Scrap metal value can help offset the cost. We quote firm from photos or a walk-through."),
+             "It depends on size and contents. Scrap metal value can help offset the cost. We quote from photos or a walk-through."),
             ("Do you take old tractors and lawn equipment?",
              "Yes — lawn tractors, mowers, snowblowers, motorcycles and other equipment. Fluids need to be drained or we'll discuss it when quoting."),
         ],
@@ -219,13 +219,13 @@ SERVICES = [
         "who": "Homeowners, sellers, and families prepping for a move.",
         "process": [
             ("Photos", "Show us the space and the stairs."),
-            ("Quote", "Firm price up front."),
+            ("Quote", "Price confirmed up front."),
             ("Carry-out", "We do every trip up the stairs."),
             ("Swept", "Floor swept clean."),
         ],
         "faqs": [
             ("How much does a basement cleanout cost?",
-             "Basement cleanouts we've completed this year have ranged from about $1,400 to $6,100, depending on volume, heavy items and access."),
+             "Basement cleanouts start at $1,400 and up, depending on volume, heavy items and access."),
             ("Can you get a chest freezer out of a basement?",
              "Yes — it's one of our most common jobs. We handle the stairs, the weight and the disposal."),
         ],
@@ -253,13 +253,13 @@ SERVICES = [
         "who": "Homeowners, second-home owners and anyone getting ready to sell.",
         "process": [
             ("Photos", "Text a few pictures."),
-            ("Quote", "Firm price, usually same day."),
+            ("Quote", "Quote, usually same day."),
             ("Clear-out", "Most garages done in one visit."),
             ("Swept", "Floor swept, ready to park."),
         ],
         "faqs": [
             ("How much does a garage cleanout cost?",
-             "Most garage cleanouts we do in Southern Vermont cost between $800 and $3,250 depending on how full the garage is and what's in it."),
+             "Garage cleanouts start at $800 and up, depending on how full the garage is and what's in it."),
             ("Can you do it the same day?",
              "Often, yes — especially in the Manchester, Stratton, Winhall and Londonderry area. Call early in the day for the best chance."),
         ],
@@ -385,7 +385,7 @@ SERVICES = [
         ),
         "includes": ["Cut-up and removal", "Cover, steps and surround", "Deck or enclosure tear-out on request", "Site cleanup"],
         "who": "Homeowners, condo associations and rental owners.",
-        "process": [("Photos", "Show the tub and the access path."), ("Quote", "Firm price."), ("Removal", "Cut, load, haul."), ("Clean", "Area swept up.")],
+        "process": [("Photos", "Show the tub and the access path."), ("Quote", "Clear price."), ("Removal", "Cut, load, haul."), ("Clean", "Area swept up.")],
         "faqs": [
             ("Does the hot tub need to be drained?",
              "Yes, please drain it and have the electrical disconnected by an electrician before we arrive. We handle everything after that."),
@@ -429,7 +429,7 @@ SERVICES = [
         ),
         "includes": ["Uprights, spinets and organs", "Stair carries", "Floor protection", "Donation when possible"],
         "who": "Homeowners, estates and churches.",
-        "process": [("Photos", "Piano type plus the path out."), ("Quote", "Firm price."), ("Removal", "Protected and careful."), ("Done", "Donated or disposed.")],
+        "process": [("Photos", "Piano type plus the path out."), ("Quote", "Clear price."), ("Removal", "Protected and careful."), ("Done", "Donated or disposed.")],
         "faqs": [
             ("Can you donate my piano?",
              "If it's in playable condition and a local organization will take it, we'll try. Most older uprights unfortunately can't be re-homed, so we dispose of them responsibly."),
@@ -453,7 +453,7 @@ SERVICES = [
         "process": [("Photos", "Text a picture."), ("Quote", "Fast price."), ("Haul-away", "We do the lifting."), ("Recycled", "Metal and refrigerant handled properly.")],
         "faqs": [
             ("How much does appliance removal cost?",
-             "Single-appliance pickups typically run $230 to $750 depending on the item, stairs and how many pieces. Multiple items in one visit save money."),
+             "Single-appliance pickups start at $230 and up, depending on the item, stairs and how many pieces. Multiple items in one visit save money."),
         ],
     },
     {

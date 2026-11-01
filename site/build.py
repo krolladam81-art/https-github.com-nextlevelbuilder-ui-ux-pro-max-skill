@@ -76,7 +76,7 @@ def price_line(key):
     if not key or key not in PRICE_RANGES:
         return None
     lo, hi, what = PRICE_RANGES[key]
-    return f"{lo}–{hi}", what
+    return f"From {lo}", what
 
 
 def jsonld(obj):
@@ -201,7 +201,7 @@ def footer():
     return f"""
 <section class="cta-band"><div class="wrap cta-in">
   <div><h2>Junk gone. On time, or $100 off.</h2>
-  <p>Call, text a few photos, or request a quote online. Real people, local crew, firm prices.</p></div>
+  <p>Call, text a few photos, or request a quote online. Real people, local crew, upfront pricing.</p></div>
   <div class="cta-actions">{tel_link(where="cta-band")}{sms_link(cls="btn btn-light", where="cta-band")}</div>
 </div></section>
 <footer class="site-footer"><div class="wrap">
@@ -304,7 +304,7 @@ def trust_grid():
     return f"""<section class="section alt"><div class="wrap">
   <p class="eyebrow">Why Southern Vermont calls us</p>
   <h2 class="section-title">The local crew that actually shows up</h2>
-  <p class="lead">Franchise junk haulers give you a four-hour window and a call center. We give you a set arrival time, a firm price, and a guarantee in writing.</p>
+  <p class="lead">Franchise junk haulers give you a four-hour window and a call center. We give you a set arrival time, clear pricing before we start, and an on-time guarantee.</p>
   <div class="grid grid-3">{cards}</div>
 </div></section>"""
 
@@ -313,7 +313,7 @@ def services_grid(items, heading="High-value cleanouts & removals", sub=None):
     cards = []
     for s in items:
         p = price_line(s.get("price"))
-        ptxt = f'<p class="price-tag">Typical: {p[0]}</p>' if p else ""
+        ptxt = f'<p class="price-tag">{p[0]} and up</p>' if p else ""
         cards.append(f'<a class="card svc-card" href="/services/{s["slug"]}/">'
                      f'{icon(SERVICE_ICON.get(s["icon"], "truck"), "ico ico-lg")}'
                      f'<h3>{e(s["name"])}</h3><p>{e(s["short"])}</p>{ptxt}'
@@ -347,8 +347,8 @@ def quote_form(preset_service="", preset_town="", where="page"):
   <p class="hp"><label>Leave blank <input name="company" tabindex="-1" autocomplete="off"></label></p>
   <input type="hidden" name="gclid"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium">
   <input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="landing_page">
-  <h3>Get a firm quote</h3>
-  <p class="small">Send the details and we'll reply with a firm price. Prefer to talk? <a href="tel:{B["phone_e164"]}" data-track="call" data-where="form">{e(B["phone_display"])}</a></p>
+  <h3>Get a free quote</h3>
+  <p class="small">Send the details and we'll reply with a quote. Prefer to talk? <a href="tel:{B["phone_e164"]}" data-track="call" data-where="form">{e(B["phone_display"])}</a></p>
   <div class="row2">
     <label>Name<input name="name" autocomplete="name" required></label>
     <label>Phone<input name="phone" type="tel" autocomplete="tel" required></label>
@@ -377,9 +377,9 @@ def build_home():
          "It is known for an on-time guarantee — if the crew is late, you get $100 off — upfront pricing, and donating usable items before disposal. "
          "It serves Manchester, Stratton, Dorset, Londonderry, Ludlow and the surrounding Southern Vermont towns."),
         ("How much does junk removal cost in Vermont?",
-         f"Based on Vermont Junk's own 2026 jobs: single large items typically run {PRICE_RANGES['single'][0]}–{PRICE_RANGES['single'][1]}, "
-         f"garage cleanouts {PRICE_RANGES['garage'][0]}–{PRICE_RANGES['garage'][1]}, basement cleanouts {PRICE_RANGES['basement'][0]}–{PRICE_RANGES['basement'][1]}, "
-         f"and whole-house or estate cleanouts {PRICE_RANGES['house'][0]}–{PRICE_RANGES['house'][1]}. Every job gets a firm quote before work starts."),
+         f"Vermont Junk's base rates: single large items from {PRICE_RANGES['single'][0]}, garage cleanouts from {PRICE_RANGES['garage'][0]}, "
+         f"basement cleanouts from {PRICE_RANGES['basement'][0]}, and whole-house or estate cleanouts from {PRICE_RANGES['house'][0]}, and up. "
+         f"The final price depends on volume, weight, access and disposal, and is confirmed with you before work starts."),
         ("Do you offer same-day junk removal?",
          "Often, yes, in our core area around Bondville, Stratton, Manchester, Peru, Londonderry, Jamaica and Dorset. Call early in the day."),
         ("What is the on-time guarantee?",
@@ -409,7 +409,7 @@ def build_home():
     <div><dt>Guarantee</dt><dd>On time, or $100 off</dd></div>
     <div><dt>Ownership</dt><dd>Woman-owned &amp; family-run (Adam &amp; Lindsay)</dd></div>
     <div><dt>Credentials</dt><dd>Insured · USDOT #{e(B["usdot"])}</dd></div>
-    <div><dt>Pricing</dt><dd>Firm upfront quotes · cleanouts typically {PRICE_RANGES["garage"][0]}–{PRICE_RANGES["house"][1]}</dd></div>
+    <div><dt>Pricing</dt><dd>Free quotes · cleanouts from {PRICE_RANGES["garage"][0]} and up</dd></div>
     <div><dt>Contact</dt><dd><a href="tel:{B["phone_e164"]}" data-track="call" data-where="facts">{e(B["phone_display"])}</a></dd></div>
   </dl>
 </div></section>
@@ -421,7 +421,7 @@ def build_home():
     <p class="eyebrow">How it works</p>
     <h2 class="section-title">Three steps. Zero lifting.</h2>
     {process_html([("Call or text photos", "Send a few pictures or a quick video — or we'll come walk through larger properties."),
-                   ("Get a firm price", "One upfront quote in writing. Nothing added after we start loading."),
+                   ("Get a quote", "We price the job up front and confirm it with you before we start loading."),
                    ("We haul, donate & sweep", "We show up on time (or $100 off), load everything, donate what we can, and sweep up.")])}
   </div>
   <div class="card stat-card">
@@ -464,7 +464,7 @@ def build_services_index():
     rest = [s for s in SERVICES if not s["featured"]]
     body = f"""{crumbs_html(crumbs)}
 <section class="page-hero"><div class="wrap"><h1>Junk Removal &amp; Cleanout Services</h1>
-<p class="lead">From a single freezer to a three-day estate cleanout, every job gets the same thing: a firm upfront price, a crew that arrives on time (or $100 off), and donation-first disposal.</p>
+<p class="lead">From a single freezer to a three-day estate cleanout, every job gets the same thing: a clear price before we start, a crew that arrives on time (or $100 off), and donation-first disposal.</p>
 <div class="hero-actions">{tel_link(where="services-hero")}<a class="btn btn-ghost" href="/contact/">Request a quote</a></div></div></section>
 {services_grid(big, "Cleanouts, demolition & big projects")}
 {services_grid(rest, "Single items, specialty removals & more")}"""
@@ -476,11 +476,11 @@ def build_services_index():
 def build_service(s):
     crumbs = [("Home", "/"), ("Services", "/services/"), (s["name"], f"/services/{s['slug']}/")]
     p = price_line(s.get("price"))
-    price_box = (f'<div class="card price-box"><p class="eyebrow">Typical cost</p><p class="big">{p[0]}</p>'
-                 f'<p class="small">Range for {e(p[1])}, based on our 2026 Southern Vermont jobs. Your firm quote depends on volume, weight and access.</p></div>'
+    price_box = (f'<div class="card price-box"><p class="eyebrow">Base rate</p><p class="big">{p[0]}+</p>'
+                 f'<p class="small">Base rate for {e(p[1])}. Prices are from this amount and up, depending on volume, weight, access and disposal.</p></div>'
                  if p else
-                 '<div class="card price-box"><p class="eyebrow">Pricing</p><p class="big">Firm quote</p>'
-                 '<p class="small">Every project is quoted upfront from photos or a walk-through — one price, in writing, before we start.</p></div>')
+                 '<div class="card price-box"><p class="eyebrow">Pricing</p><p class="big">Quoted by project</p>'
+                 '<p class="small">Every project is quoted from photos or a walk-through, and we confirm the price with you before we start.</p></div>')
     includes = "".join(f"<li>{icon('check')} {e(i)}</li>" for i in s["includes"])
     town_links = "".join(f'<a class="chip" href="/junk-removal/{t["slug"]}/">{e(t["short"])}</a>' for t in TOWNS)
     related = [x for x in SERVICES if x["slug"] != s["slug"] and x["featured"]][:3]
@@ -496,15 +496,14 @@ def build_service(s):
     if p:
         lo, hi, _ = PRICE_RANGES[s["price"]]
         svc_schema["offers"] = {"@type": "Offer", "priceCurrency": "USD", "priceSpecification": {
-            "@type": "PriceSpecification", "minPrice": lo.strip("$+").replace(",", ""),
-            "maxPrice": hi.strip("$+").replace(",", ""), "priceCurrency": "USD"}}
+            "@type": "PriceSpecification", "minPrice": lo.strip("$+").replace(",", ""), "priceCurrency": "USD"}}
     body = f"""{crumbs_html(crumbs)}
 <section class="page-hero"><div class="wrap two-col">
   <div>
     <p class="eyebrow">{e(s["name"])} · Southern Vermont</p>
     <h1>{e(s["h1"])}</h1>
     <p class="lead">{e(s["intro"])}</p>
-    <p class="guarantee dark">{icon("clock")} <span><strong>On time, or $100 off.</strong> Firm upfront price.</span></p>
+    <p class="guarantee dark">{icon("clock")} <span><strong>On time, or $100 off.</strong> Free quotes.</span></p>
     <div class="hero-actions">{tel_link(where="service-hero")}{sms_link(where="service-hero")}</div>
   </div>
   <div>{quote_form(preset_service=s["slug"], where="service")}</div>
@@ -559,9 +558,9 @@ def build_town(t):
                 "extended": f"We serve {t['short']} on scheduled trips, so we recommend booking a few days ahead. It's ideal for larger cleanouts."}[t["tier"]]
     faqs = list(t["faq"]) + [
         (f"How much does junk removal cost in {t['short']}, VT?",
-         f"Pricing is the same across our service area: single large items typically run {PRICE_RANGES['single'][0]}–{PRICE_RANGES['single'][1]}, "
-         f"garage cleanouts {PRICE_RANGES['garage'][0]}–{PRICE_RANGES['garage'][1]}, and whole-house or estate cleanouts {PRICE_RANGES['house'][0]}–{PRICE_RANGES['house'][1]}. "
-         f"You get a firm quote before we start."),
+         f"Our base rates are the same across our service area: single large items from {PRICE_RANGES['single'][0]}, "
+         f"garage cleanouts from {PRICE_RANGES['garage'][0]}, and whole-house or estate cleanouts from {PRICE_RANGES['house'][0]}, and up. "
+         f"The final price depends on the job and is confirmed with you before we start."),
         (f"Do you offer same-day junk removal in {t['short']}?", same_day),
         (f"What areas near {t['short']} do you serve?",
          f"Along with {villages}, we serve nearby {', '.join(n['short'] for n in neighbors)} and the rest of Southern Vermont."),
@@ -604,9 +603,9 @@ def build_town(t):
 
 def build_pricing():
     crumbs = [("Home", "/"), ("Pricing", "/pricing/")]
-    rows = "".join(f"<tr><th scope=row>{e(w.capitalize())}</th><td>{e(lo)} – {e(hi)}</td></tr>" for lo, hi, w in PRICE_RANGES.values())
+    rows = "".join(f"<tr><th scope=row>{e(w.capitalize())}</th><td>From {e(lo)} and up</td></tr>" for lo, hi, w in PRICE_RANGES.values())
     faqs = [
-        ("How do you price junk removal?", "By volume, weight and access. Heavy items (pianos, hot tubs, concrete), long carries and stairs affect the price. We give one firm quote before we start and never add fees after loading."),
+        ("How do you price junk removal?", "By volume, weight and access. Heavy items (pianos, hot tubs, concrete), long carries and stairs affect the price. We confirm the price with you before we start and never add fees after loading."),
         ("Are disposal and dump fees included?", "Yes. Our quote includes labor, hauling, and disposal/recycling fees."),
         ("Do you charge for a quote?", "No. Quotes from photos, video or a walk-through are always free."),
         ("Do you require a deposit?", "Small jobs, no. Large cleanouts and scheduled multi-day jobs may require a deposit to hold the date."),
@@ -614,17 +613,17 @@ def build_pricing():
     ]
     body = f"""{crumbs_html(crumbs)}
 <section class="page-hero"><div class="wrap narrow"><h1>Junk Removal Pricing in Southern Vermont</h1>
-<p class="lead">No mystery pricing. These ranges come straight from the jobs we completed in 2026 — so you know what to expect before you call.</p></div></section>
+<p class="lead">No mystery pricing. Here are our base rates, so you know where a job starts before you call.</p></div></section>
 <section class="section"><div class="wrap narrow">
-<table class="price-table"><caption>Typical job costs (2026, Southern Vermont)</caption>
-<thead><tr><th scope=col>Job type</th><th scope=col>Typical range</th></tr></thead><tbody>{rows}
-<tr><th scope=row>Light demolition, construction debris &amp; commercial</th><td>Firm quote by project</td></tr></tbody></table>
-<p class="small">Every quote is firm and in writing. Ranges reflect volume and access; the biggest estate and multi-building jobs can exceed the top of the range.</p>
-<div class="hero-actions">{tel_link(where="pricing")}<a class="btn btn-ghost" href="/contact/">Get my firm quote</a></div>
+<table class="price-table"><caption>Base rates (Southern Vermont)</caption>
+<thead><tr><th scope=col>Job type</th><th scope=col>Base rate</th></tr></thead><tbody>{rows}
+<tr><th scope=row>Light demolition, construction debris &amp; commercial</th><td>Quoted by project</td></tr></tbody></table>
+<p class="small">Prices shown are base rates — from the listed amount and up. Your final price depends on volume, weight, access and disposal, and we confirm it with you before work starts.</p>
+<div class="hero-actions">{tel_link(where="pricing")}<a class="btn btn-ghost" href="/contact/">Get my free quote</a></div>
 </div></section>
 {faq_html(faqs, "Pricing questions")}"""
     page("/pricing/", "Junk Removal Prices in Vermont (2026) | Vermont Junk",
-         "Real 2026 junk removal prices in Southern Vermont: single items, garage, basement, whole-house and estate cleanouts. Firm upfront quotes. On time or $100 off.",
+         "Junk removal base rates in Southern Vermont: single items, garage, basement, whole-house and estate cleanouts. Free quotes. On time or $100 off.",
          body, [faq_schema(faqs), breadcrumb_schema(crumbs)], active="/pricing/")
 
 
@@ -638,7 +637,7 @@ def build_about():
 <h2>Why we started</h2>
 <p>Southern Vermont is full of second homes, old barns, family estates and ski condos — and for years, getting junk hauled meant waiting on a franchise's four-hour window, a call center somewhere else, and a price that changed once the truck arrived. We knew our neighbors deserved better.</p>
 <h2>Our guarantee</h2>
-<p>When you book, we give you an arrival window. If we're late, you get <strong>$100 off</strong>. It's in writing, on every job. We also give you a firm price before we lift anything — no surprise fees after loading.</p>
+<p>When you book, we give you an arrival window. If we're late, you get <strong>$100 off</strong>. It's in writing, on every job. We also confirm the price with you before we lift anything — no surprise fees after loading.</p>
 <h2>Donate first, landfill last</h2>
 <p>Usable furniture and household goods go to local re-use partners like Habitat for Humanity ReStore. Metal is recycled. Only what can't be re-used or recycled goes to disposal.</p>
 <h2>Credentials</h2>
@@ -691,8 +690,8 @@ def build_contact():
     crumbs = [("Home", "/"), ("Contact", "/contact/")]
     body = f"""{crumbs_html(crumbs)}
 <section class="page-hero"><div class="wrap two-col">
-  <div><h1>Get a Free, Firm Quote</h1>
-  <p class="lead">The fastest way: call or text a few photos. We'll reply with a firm, upfront price.</p>
+  <div><h1>Get a Free Quote</h1>
+  <p class="lead">The fastest way: call or text a few photos. We'll reply with a quote.</p>
   <div class="hero-actions">{tel_link(where="contact")}{sms_link(where="contact")}</div>
   <p class="nap"><strong>{e(B["legal_name"])}</strong><br>Based in {e(B["locality"])}, VT {e(B["postal_code"])}<br>
   <a href="tel:{B["phone_e164"]}" data-track="call" data-where="contact-nap">{e(B["phone_display"])}</a> · {e(B["phone_digits"])}<br>
@@ -700,14 +699,14 @@ def build_contact():
   <div>{quote_form(where="contact")}</div>
 </div></section>"""
     page("/contact/", "Contact Vermont Junk | Free Junk Removal Quote",
-         "Call or text 1-888-802-JUNK or request a free, firm junk removal quote online. Serving Southern Vermont from Bondville.",
+         "Call or text 1-888-802-JUNK or request a free junk removal quote online. Serving Southern Vermont from Bondville.",
          body, [breadcrumb_schema(crumbs)], active="/contact/")
 
 
 def build_misc():
     page("/thank-you/", "Thanks — we got your request | Vermont Junk", "Quote request received.",
          f"""<section class="page-hero"><div class="wrap narrow center" data-conversion="form">
-<h1>Got it — thank you!</h1><p class="lead">We'll get back to you with a firm quote shortly. Need it faster? Call now.</p>
+<h1>Got it — thank you!</h1><p class="lead">We'll get back to you with a quote shortly. Need it faster? Call now.</p>
 <div class="hero-actions center">{tel_link(where="thank-you")}</div></div></section>""", noindex=True)
     page("/404.html", "Page not found | Vermont Junk", "Page not found.",
          f"""<section class="page-hero"><div class="wrap narrow center"><h1>That page got hauled away.</h1>
@@ -746,7 +745,7 @@ Sitemap: {SITE_URL}/sitemap.xml
 """)
     svc = "\n".join(f"- [{s['name']}]({SITE_URL}/services/{s['slug']}/): {s['short']}" for s in SERVICES)
     towns = "\n".join(f"- [{t['name']}, VT]({SITE_URL}/junk-removal/{t['slug']}/) — {t['county']}" for t in TOWNS)
-    prices = "\n".join(f"- {w.capitalize()}: {lo}–{hi}" for lo, hi, w in PRICE_RANGES.values())
+    prices = "\n".join(f"- {w.capitalize()}: from {lo} and up" for lo, hi, w in PRICE_RANGES.values())
     (OUT / "llms.txt").write_text(f"""# Vermont Junk
 
 > Vermont Junk (Vermont Junk LLC) is a woman-owned, family-run junk removal, estate cleanout and light demolition company based in Bondville (Winhall), Vermont, serving {len(TOWNS)} towns across Southern Vermont. Guarantee: on time, or $100 off. Phone: {B['phone_display']} ({B['phone_digits']}). Email: {B['email']}.
@@ -757,11 +756,11 @@ Sitemap: {SITE_URL}/sitemap.xml
 - Ownership: woman-owned and family-run (Adam & Lindsay)
 - Guarantee: if the crew is late for the arrival window, the customer gets $100 off
 - Credentials: insured incl. workers' compensation; USDOT #{B['usdot']}
-- Pricing: firm upfront quotes; disposal fees included
+- Pricing: base rates shown are "from $X and up"; final price confirmed before work starts; disposal fees included
 - Disposal: donation (e.g. Habitat for Humanity ReStore) and recycling before landfill
 - Booking: call or text {B['phone_display']}, or {SITE_URL}/contact/
 
-## Typical prices (from 2026 jobs)
+## Base rates (from $X and up)
 {prices}
 
 ## Services

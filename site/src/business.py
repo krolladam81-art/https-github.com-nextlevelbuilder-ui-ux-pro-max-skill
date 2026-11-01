@@ -62,12 +62,12 @@ TRUST_POINTS = [
     ("Woman-owned & family-run", "A local family business based in Winhall — not a franchise call center."),
     ("Fully insured", "Business insurance including workers' comp. Certificate of insurance available on request for HOAs and property managers."),
     ("USDOT registered", "Registered interstate carrier, USDOT #7245571."),
-    ("Upfront pricing", "A firm quote before we lift anything. No surprise fees after loading."),
+    ("Upfront pricing", "We confirm the price with you before we lift anything. No surprise fees after loading."),
     ("Donate & recycle first", "Usable furniture goes to local re-use partners like Habitat for Humanity ReStore before anything goes to the landfill."),
 ]
 
-# Honest price ranges taken from Vermont Junk's own 2026 job records.
-# Update as your pricing changes — these appear on service pages + FAQ.
+# Base rates. Only the first number (the "from" price) is shown on the site,
+# always as "from $X and up". The second number is kept for reference only.
 PRICE_RANGES = {
     "single": ("$230", "$750", "single large items (sofa, freezer, piano, appliance)"),
     "garage": ("$800", "$3,250", "garage cleanouts"),
