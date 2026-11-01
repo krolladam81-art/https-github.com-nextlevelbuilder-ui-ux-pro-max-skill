@@ -1,0 +1,6 @@
+# Old GoDaddy-style URLs -> new pages (add any old URLs you find in Search Console)
+/services            /services/            301
+/contact-us          /contact/             301
+/about-us            /about/               301
+/junk-removal-manchester-vt  /junk-removal/manchester-vt/  301
+/home                /                     301

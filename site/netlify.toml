@@ -1,0 +1,4 @@
+# Deploy: point Netlify at this repo with base directory "site".
+[build]
+  command = "python3 build.py"
+  publish = "public"
